@@ -554,7 +554,7 @@
 }
 .policy-content-box {
   margin-top: 10px;
-
+width: 655px;
   height: 400px;
   overflow-y: scroll;
   border: 1px solid #ccc;

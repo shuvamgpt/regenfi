@@ -33,31 +33,37 @@
 
       <div class="lower-right-section">
         <div>
-          <img :src="currentImage" class="image-banner" />
+			<img :src="this['image' + currentImageIndex]" class="image-banner" :key="currentImageIndex" />
         </div>
       </div>
     </div>
+    <ContactUs v-if="isOpen" @close="closeContactPopup"></ContactUs>
   </div>
 </template>
 
 <script>
-// import banner1 from "./../assets/english.png";
-// import banner2 from "./../assets/nyanja.png.png";
-// import banner3 from "./../assets/hindi.png";
+/* eslint-disable */
+import ContactUs from "./ContactUs.vue";
 
 export default {
   components: {
     // Popup,
+    ContactUs,
   },
   data() {
     return {
       isPopupVisible: false,
-      imagePaths: [
-        "./../assets/banner1.png",
-        "./../assets/banner2.png",
-        "./../assets/banner3.png",
-      ],
-      currentImageIndex: 0,
+      isOpen: false,
+      //   imagePaths: [
+      //     "./../assets/english.png",
+      //     "./../assets/nyanja.png",
+      //     "./../assets.hindi.png",
+      //   ],
+      //   currentImageIndex: 0,
+      image1: require("./../assets/english.png"),
+      image2: require("./../assets/nyanja.png"),
+      image3: require("./../assets/hindi.png"),
+      currentImageIndex: 1,
     };
   },
   computed: {
@@ -71,13 +77,17 @@ export default {
   methods: {
     startImageTransition() {
       setInterval(() => {
-        this.currentImageIndex = (this.currentImageIndex + 1) % 3;
-      }, 4000); // 4000 milliseconds (4 seconds)
+        this.currentImageIndex = (this.currentImageIndex % 3) + 1;
+      }, 3000);
     },
     goToContactUs() {
-      this.$router.push({ name: "ContactUs" });
+      //   this.$router.push({ name: "ContactUs" });
+      this.isOpen = true;
 
       console.log("contactus");
+    },
+    closeContactPopup() {
+      this.isOpen = false;
     },
     goToLegalPage() {
       try {
@@ -87,12 +97,6 @@ export default {
         console.error("An error occurred:", error);
       }
     },
-
-    //   cycleImages() {
-    //   setInterval(() => {
-    //     this.currentImageIndex = (this.currentImageIndex + 1) % this.images.length;
-    //   }, 3000);
-    // }
   },
 };
 </script>
@@ -171,7 +175,17 @@ export default {
   height: 450px;
   width: 698.31px;
   animation-name: fadeIn;
+  transition: opacity 1s ease-in-out;
 }
+
+@keyframes fadeIn {
+	from {
+	  opacity: 0;
+	}
+	to {
+	  opacity: 1;
+	}
+  }
 
 .legal {
   color: rgba(91, 112, 175, 1);

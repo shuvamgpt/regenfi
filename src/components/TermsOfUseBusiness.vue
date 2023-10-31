@@ -22,12 +22,11 @@
                   These business terms of use (“Business Terms”) apply to the
                   Business Services (defined hereunder) provided by Regenfi Labs
                   Private Limited, a private limited company, incorporated under
-                  the provisions of the Companies Act, 2013, having its
-                  registered office at House No. 43, Block- G, Landmark NA
-                  Sultanpuri, New Delhi - 110041, India (“Company”, “We”, “we”,
-                  “Us” or “Our”), to You and the company or the business that
-                  You are authorized to represent (“You”, “you” “Your”, “your”
-                  or “Business”).
+                  the provisions of the Companies Act, 2013, having its office
+                  at 91Springboard, Plot No. D, 107, Vyapar Marg, D Block, Sector 2, Noida,
+                  Uttar Pradesh-201301, India (“Company”, “We”, “we”, “Us” or “Our”),
+                  to You and the company or the business that You are authorized
+                  to represent (“You”, “you” “Your”, “your” or “Business”).
                 </p>
                 <p>
                   The Business Terms contained in this electronic record, read
@@ -1619,8 +1618,7 @@ ul {
   padding-left: 10px;
   padding-right: 10px;
   padding-bottom: 10px;
-width: 655px;
-
+  width: 655px;
 }
 
 .active {
@@ -1666,5 +1664,36 @@ width: 655px;
 
 .bold {
   font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .main {
+    margin-left: 0;
+    margin-top: 0;
+  }
+
+  .main-body {
+    margin-top: px;
+    display: relative;
+  }
+
+  .policy-body {
+    margin-left: 5px !important;
+    margin-top: 200px !important;
+    height: 600px;
+  }
+  .upper-div {
+    width: 22rem;
+    margin-left: -50px;
+  }
+  .policy-content-box {
+    margin-left: -50px;
+    width: 22rem;
+
+    height: 400px;
+  }
+  .message-1 {
+    margin-bottom: 10px;
+  }
 }
 </style>

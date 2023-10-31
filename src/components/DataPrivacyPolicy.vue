@@ -554,7 +554,7 @@
 }
 .policy-content-box {
   margin-top: 10px;
-width: 655px;
+  width: 655px;
   height: 400px;
   overflow-y: scroll;
   border: 1px solid #ccc;
@@ -630,5 +630,33 @@ ul {
 
 .bold {
   font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .main {
+    margin-left: 0;
+    margin-top: 0;
+  }
+
+  .main-body {
+    margin-top: px;
+    display: relative;
+  }
+
+  .policy-body {
+    margin-left: 5px !important;
+    margin-top: 200px !important;
+    height: 600px;
+  }
+  .upper-div {
+    width: 22rem;
+    margin-left: -50px;
+  }
+  .policy-content-box {
+    margin-left: -50px;
+    width: 22rem;
+
+    height: 400px;
+  }
 }
 </style>

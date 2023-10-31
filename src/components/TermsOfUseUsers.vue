@@ -21,9 +21,9 @@
                 These terms of use (“Terms”) apply to the Services (defined
                 hereunder) provided by Regenfi Labs Private Limited, a private
                 limited company, incorporated under the provisions of the
-                Companies Act, 2013, having its registered office at House No.
-                43, Block- G, Landmark NA Sultanpuri, New Delhi - 110041, India
-                (“Company” or “We” or “Us” or “Our”).
+                Companies Act, 2013, having its office at 91Springboard, Plot
+                No. D, 107, Vyapar Marg, D Block, Sector 2, Noida, Uttar
+                Pradesh-201301, India (“Company” or “We” or “Us” or “Our”).
               </div>
               <div>
                 For the purpose of these Terms, wherever the context so requires
@@ -1324,5 +1324,33 @@ ul {
 
 .bold {
   font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .main {
+    margin-left: 0;
+    margin-top: 0;
+  }
+
+  .main-body {
+    margin-top: px;
+    display: relative;
+  }
+
+  .policy-body {
+    margin-left: 5px !important;
+    margin-top: 200px !important;
+    height: 600px;
+  }
+  .upper-div {
+    width: 22rem;
+    margin-left: -50px;
+  }
+  .policy-content-box {
+    margin-left: -50px;
+    width: 22rem;
+
+    height: 400px;
+  }
 }
 </style>

@@ -6,10 +6,14 @@
 
     <div class="lower-section">
       <div class="lower-left-section">
-        <p class="enterprise-suite">IMPACT ENGINE</p>
+        <div class="enterprise-suite">IMPACT ENGINE</div>
+
         <div class="enterprise-suite-heading">
-          <div>ENTERPRISE SUITE</div>
-          <div>FOR IMPACT</div>
+          <!-- <div class="enterprise-suite-heading-1">ENTERPRISE SUITE</div>
+          <div class="enterprise-suite-heading-2">FOR IMPACT</div> -->
+          <div class="enterprise-suite-heading-3">
+            ENTERPRISE SUITE FOR IMPACT
+          </div>
         </div>
         <div class="message">
           <p>
@@ -23,19 +27,19 @@
         <v-btn @click="goToContactUs" class="contact-us-button"
           >Contact Us</v-btn
         >
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
+
         <p class="legal" @click="goToLegalPage">Legal</p>
       </div>
 
-      <div class="lower-right-section">
+      <!-- <div class="lower-right-section">
         <div>
-			<img :src="this['image' + currentImageIndex]" class="image-banner" :key="currentImageIndex" />
+          <img
+            :src="this['image' + currentImageIndex]"
+            class="image-banner"
+            :key="currentImageIndex"
+          />
         </div>
-      </div>
+      </div> -->
     </div>
     <ContactUs v-if="isOpen" @close="closeContactPopup"></ContactUs>
   </div>
@@ -110,38 +114,53 @@ export default {
     rgba(236, 231, 243, 0.63) 50%,
     rgba(233, 226, 244, 0.72) 75%
   );
-  font-size: large;
-  height: 41rem;
-
-  width: 87.7rem;
+  font-size: medium;
+  height: auto;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 2rem;
+  margin-right: 2rem;
 }
 
 .image {
-  margin: 30px 20px 20px 77px;
+  max-width: 8rem;
 }
 
 .upper-section {
-  height: 38.92px;
-  width: 158px;
+  height: 15%;
+  width: 20%;
+  margin-left: 0%;
 }
 
 .lower-section {
-  width: 1290px;
-  height: 339px;
-  margin-top: 65px;
   display: flex;
-  flex-direction: row;
-  margin-left: 77px;
+  flex-direction: column;
 }
 
 .lower-left-section {
+  position: relative;
+  top: -10%;
+  width: 50%;
+}
+.lower-right-section {
   height: 246px;
-  width: 592px;
+  width: 40%;
+  max-width: 100%;
+}
+
+.enterprise-suite-heading-1 {
+  width: 100%;
+}
+
+.enterprise-suite-heading-3 {
+  width: 80%;
 }
 
 .enterprise-suite {
   color: rgba(91, 112, 175, 1);
   font-weight: 700;
+  width: 10rem;
+  margin-top: 4%;
 }
 
 .enterprise-suite-heading {
@@ -149,6 +168,7 @@ export default {
   font-weight: 700;
   font-size: 54px;
   line-height: 64.8px;
+  margin-top: 1%;
 }
 
 .message {
@@ -156,12 +176,13 @@ export default {
   font-size: 18px;
   line-height: 21.6px;
   color: rgba(87, 83, 83, 1);
+  width: 85%;
 }
 
 .contact-us-button {
   display: flex;
   width: 109px;
-  height: 40px;
+  height: 40px !important;
   color: white;
   border-radius: 4px;
   background-color: rgba(91, 112, 175, 1) !important;
@@ -169,30 +190,50 @@ export default {
   justify-content: center;
   cursor: pointer;
   text-transform: none;
+  font-weight: 600;
 }
 
 .image-banner {
-  height: 450px;
-  width: 698.31px;
+  height: 490px;
+  width: 100%;
   animation-name: fadeIn;
   transition: opacity 1s ease-in-out;
+  position: relative;
+  top: -48px;
 }
 
 @keyframes fadeIn {
-	from {
-	  opacity: 0;
-	}
-	to {
-	  opacity: 1;
-	}
+  from {
+    opacity: 0;
   }
+  to {
+    opacity: 1;
+  }
+}
 
 .legal {
   color: rgba(91, 112, 175, 1);
   font-weight: 600;
   font-size: 18px;
-  margin-top: 25px;
+  margin-top: 5rem;
   text-decoration: underline;
   cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .lower-left-section {
+    width: 100%;
+  }
+  .enterprise-suite-heading-3 {
+    font-size: 52px;
+    width: 90%;
+  }
+  .message {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 21.6px;
+    color: rgba(87, 83, 83, 1);
+    width: 100%;
+  }
 }
 </style>

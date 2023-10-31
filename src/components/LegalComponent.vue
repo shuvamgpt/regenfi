@@ -22,6 +22,8 @@
 </template>
 
 <script>
+/* eslint-disable */
+import router from "@/main";
 import TermsOfUseBusiness from "./TermsOfUseBusiness.vue";
 export default {
   data() {
@@ -45,7 +47,10 @@ export default {
       this.activeItemComponent = this.sidebarItems[index].component;
     },
     checkfun() {
-      console.log("con", this.activeItemComponent);
+      // console.log("con", this.activeItemComponent);
+      this.$router.push({ name: "/" });
+
+      
     },
   },
 };
@@ -54,19 +59,20 @@ export default {
 <style scoped>
 .menu-outer {
   position: absolute;
-  width: 71%;
+  width: 70%;
   top: 100px;
-  height: 85px;
+  height: 4rem;
 }
 .logo {
   margin-top: 30px;
+  cursor: pointer;
 }
 
 .menu {
   margin-top: 10px;
   margin-left: 15px;
   width: 20% !important;
-  height: 30% !important;
+  height: 30% ;
   display: flex;
   flex-direction: column;
   gap: 15px;
@@ -101,4 +107,25 @@ ul {
   flex-direction: column;
   gap: 10px;
 }
+
+@media (max-width: 768px) {
+  .menu {
+    height: 20%;
+    width: 13rem !important;
+  }
+
+  .menu-outer {
+    height: 10rem;
+    width: 390px;
+    margin-left: -50px;
+  }
+
+  .logo {
+    margin-left: -50px;
+  }
+
+
+  
+}
+
 </style>

@@ -1,45 +1,48 @@
 <template>
-  <div class="main" style="margin: 0">
+  <div class="main" style="margin: 0; width: 100%">
     <div class="upper-section">
       <img src="./../assets/logo.png" class="image" />
     </div>
 
-    <div class="lower-section">
-      <div class="lower-left-section">
-        <div class="enterprise-suite">IMPACT ENGINE</div>
+    <div class="lower-outer-section">
+      <div class="lower-section">
+        <div class="lower-left-section">
+          <div class="enterprise-suite">IMPACT ENGINE</div>
 
-        <div class="enterprise-suite-heading">
-          <!-- <div class="enterprise-suite-heading-1">ENTERPRISE SUITE</div>
+          <div class="enterprise-suite-heading">
+            <!-- <div class="enterprise-suite-heading-1">ENTERPRISE SUITE</div>
           <div class="enterprise-suite-heading-2">FOR IMPACT</div> -->
-          <div class="enterprise-suite-heading-3">
-            ENTERPRISE SUITE FOR IMPACT
+            <div class="enterprise-suite-heading-3">
+              ENTERPRISE SUITE FOR IMPACT
+            </div>
+          </div>
+          <div class="message">
+            <p>
+              Unleash the impact potential of your projects in emerging markets.
+              Seamlessly deploy assets, monitor with precision, and virtualize
+              teams for real-time insights. Tailored for grassroot organisations
+              and financiers desiring transparent impact.
+            </p>
+          </div>
+          <br />
+          <v-btn @click="goToContactUs" class="contact-us-button"
+            >Contact Us</v-btn
+          >
+        </div>
+
+        <div class="lower-right-section">
+          <div>
+            <img
+              :src="currentImage"
+              class="image-banner"
+              :key="currentImageIndex"
+            />
           </div>
         </div>
-        <div class="message">
-          <p>
-            Unleash the impact potential of your projects in emerging markets.
-            Seamlessly deploy assets, monitor with precision, and virtualize
-            teams for real-time insights. Tailored for grassroot organisations
-            and financiers desiring transparent impact.
-          </p>
-        </div>
-        <br />
-        <v-btn @click="goToContactUs" class="contact-us-button"
-          >Contact Us</v-btn
-        >
-
+      </div>
+      <div>
         <p class="legal" @click="goToLegalPage">Legal</p>
       </div>
-
-      <!-- <div class="lower-right-section">
-        <div>
-          <img
-            :src="this['image' + currentImageIndex]"
-            class="image-banner"
-            :key="currentImageIndex"
-          />
-        </div>
-      </div> -->
     </div>
     <ContactUs v-if="isOpen" @close="closeContactPopup"></ContactUs>
   </div>
@@ -58,21 +61,28 @@ export default {
     return {
       isPopupVisible: false,
       isOpen: false,
-      //   imagePaths: [
-      //     "./../assets/english.png",
-      //     "./../assets/nyanja.png",
-      //     "./../assets.hindi.png",
-      //   ],
-      //   currentImageIndex: 0,
-      image1: require("./../assets/english.png"),
-      image2: require("./../assets/nyanja.png"),
-      image3: require("./../assets/hindi.png"),
-      currentImageIndex: 1,
+      imagesComputer: [
+        require("./../assets/english.png"),
+        require("./../assets/nyanja.png"),
+        require("./../assets/hindi.png"),
+      ],
+      imagesMobile: [
+        require("./../assets/mobile1.png"),
+        require("./../assets/mobile2.png"),
+        require("./../assets/mobile3.png"),
+      ],
+
+      currentImageIndex: 0,
     };
   },
+
   computed: {
     currentImage() {
-      return this.imagePaths[this.currentImageIndex];
+      if (window.innerWidth <= 768) {
+        return this.imagesMobile[this.currentImageIndex];
+      } else {
+        return this.imagesComputer[this.currentImageIndex];
+      }
     },
   },
   created() {
@@ -81,13 +91,15 @@ export default {
   methods: {
     startImageTransition() {
       setInterval(() => {
-        this.currentImageIndex = (this.currentImageIndex % 3) + 1;
-      }, 3000);
+        if (window.innerWidth <= 768) {
+          this.currentImageIndex = (this.currentImageIndex + 1) % 3;
+        } else {
+          this.currentImageIndex = (this.currentImageIndex + 1) % 3;
+        }
+      }, 2000);
     },
     goToContactUs() {
-      //   this.$router.push({ name: "ContactUs" });
       this.isOpen = true;
-
       console.log("contactus");
     },
     closeContactPopup() {
@@ -115,11 +127,8 @@ export default {
     rgba(233, 226, 244, 0.72) 75%
   );
   font-size: medium;
-  height: auto;
-  max-width: 100%;
   margin: 0 auto;
   padding: 2rem;
-  margin-right: 2rem;
 }
 
 .image {
@@ -129,18 +138,27 @@ export default {
 .upper-section {
   height: 15%;
   width: 20%;
-  margin-left: 0%;
+  margin-left: 46px;
+}
+
+.lower-outer-section {
+  display: flex;
+  flex-direction: column;
 }
 
 .lower-section {
   display: flex;
-  flex-direction: column;
+  margin-left: 46px;
+  margin-top: 80px;
 }
 
 .lower-left-section {
   position: relative;
   top: -10%;
   width: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
 .lower-right-section {
   height: 246px;
@@ -177,6 +195,9 @@ export default {
   line-height: 21.6px;
   color: rgba(87, 83, 83, 1);
   width: 85%;
+  margin-top: 11px;
+  text-align: justify;
+  padding-bottom: 8px;
 }
 
 .contact-us-button {
@@ -194,12 +215,13 @@ export default {
 }
 
 .image-banner {
-  height: 490px;
-  width: 100%;
+  height: 545px;
+  width: 795px;
   animation-name: fadeIn;
   transition: opacity 1s ease-in-out;
   position: relative;
-  top: -48px;
+  top: -20px;
+  margin-left: -90px;
 }
 
 @keyframes fadeIn {
@@ -215,12 +237,23 @@ export default {
   color: rgba(91, 112, 175, 1);
   font-weight: 600;
   font-size: 18px;
-  margin-top: 5rem;
+  margin-top: 6rem;
   text-decoration: underline;
   cursor: pointer;
+  margin-left: 46px;
 }
 
 @media (max-width: 768px) {
+  .upper-section {
+    margin-left: 10px;
+  }
+
+  .lower-section {
+    display: flex;
+    flex-direction: column;
+    margin-top: 35px;
+    margin-left: 10px;
+  }
   .lower-left-section {
     width: 100%;
   }
@@ -234,6 +267,22 @@ export default {
     line-height: 21.6px;
     color: rgba(87, 83, 83, 1);
     width: 100%;
+    text-align: justify;
+  }
+  .contact-us-button {
+    height: 48px !important;
+    width: 109px;
+  }
+
+  .image-banner {
+    margin-top: 10px;
+    width: 523px;
+    height: 450px;
+    margin-left: -100px;
+  }
+
+  .legal {
+    margin-left: 10px;
   }
 }
 </style>

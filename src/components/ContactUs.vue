@@ -63,7 +63,7 @@
 
 // import image11 from "./../assets/contactUs1.png";
 // import image12 from "./../assets/contactUs2.png";
-import emailjs from "emailjs-com";
+// import emailjs from "emailjs-com";
 export default {
   name: "ContactUs",
   data() {
@@ -356,13 +356,15 @@ export default {
 
 @media (max-width: 768px) {
   .right-content {
-    height: 556px;
+    height: 575px;
     width: 90%;
   }
 
   .heading {
     margin-top: 15px;
     margin-left: 110px;
+    font-weight: 600;
+    padding-bottom: 4px;
   }
 
   .help {
@@ -379,7 +381,10 @@ export default {
 
   .submit-button {
     width: 290px;
-    height: 58px;
+    height: 60px !important;
+    font-size: 20px;
+    font-weight: 600;
+    padding: 17px 16px 17px 16px;
   }
 
   .close {
@@ -390,9 +395,9 @@ export default {
 
   .material-icons {
     position: absolute;
-    left: 330px;
-    top: 70px;
-    cursor: pointer;
+    left: 328px;
+    top: 60px;
+    
   }
 
   .popup {
@@ -402,8 +407,12 @@ export default {
   .popup-content {
     height: 610px;
     top: 1px !important;
-    border: 2px solid red;
   }
+
+  .form-content {
+    gap: 35px;
+  }
+
 
 }
 </style>

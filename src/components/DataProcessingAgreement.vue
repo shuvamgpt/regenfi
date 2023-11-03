@@ -431,5 +431,8 @@ ul {
 
     height: 400px;
   }
+  .message-1 {
+    margin-bottom: 10px;
+  }
 }
 </style>
